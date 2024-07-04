@@ -1,0 +1,121 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Raleway:ital,wght@0,100..900;1,100..900&family=Ubuntu+Mono:wght@400;700&display=swap");
+
+:root {
+
+  --primary-color: #4ECDC4;
+  --secondary-color: #008080;
+
+  --text-color: #333;
+
+  --branco: #fff;
+
+}
+
+body {
+  font-family: "Raleway", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+
+  background-image: linear-gradient(-225deg, #fffeff 0%, #d7fffe 100%);
+
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+h1 {
+
+  position: absolute;
+  top: 0;
+  padding-top: 1em; 
+  background: linear-gradient(90deg, #008080 0%, #007070 50%, #4ECDC4 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 700;
+}
+
+h2 {
+  color: var(--text-color);
+  font-weight: 600;
+}
+
+form {
+  background-color: rgba(255, 255, 255, 0.13);
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+input[type="file"] {
+  margin: 0;
+  color: var(--secondary-color);
+}
+
+#results {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.button {
+  background-color: var(--primary-color);
+  color: var(--branco);
+  width: 8.5em;
+  height: 2.9em;
+  border: var(--secondary-color) 0.2em solid;
+  border-radius: 11px;
+  text-align: right;
+  transition: all 0.6s ease;
+  font-weight: 600;
+}
+
+.button:hover {
+  background-color: var(--secondary-color);
+  cursor: pointer;
+}
+
+.button svg {
+  width: 1.6em;
+  margin: -0.2em 0.8em 1em;
+  position: absolute;
+  display: flex;
+  transition: all 0.6s ease;
+}
+
+.button:hover svg {
+  transform: translateX(5px);
+}
+
+.text {
+  margin: 0 1.5em;
+}
+
+hr {
+  margin: 0;
+}
+
+.rodapé {
+  color: var(--secondary-color);
+  padding: 1em;
+  position: absolute;
+  bottom: 0;
+}
+
+.logohugo {
+  background: url("/public/assets/HByHugo.svg") no-repeat center;
+  width: 50px;
+  height: 50px;
+}
+
+.copyright {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}

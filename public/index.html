@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <title>Contador de Páginas de PDF</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+
+<body>
+    <h1>Upload de PDFs</h1>
+    <form id="uploadForm" action="/upload" method="post" enctype="multipart/form-data">
+        <input type="file" name="pdfs" multiple>
+        <button class="button" type="submit"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75">
+                </path>
+            </svg>
+
+
+            <div class="text">
+                Enviar
+            </div>
+        </button>
+    </form>
+    <div id="results">
+        <h2>Resultados:</h2>
+        <p>Total de PDFs: <span id="total-pdfs">0</span></p>
+        <p>Total de Páginas: <span id="total-pages">0</span></p>
+    </div>
+    <footer class="rodapé">
+        <div class="copyright">&copy; 2024. Development by
+            <a href="https://bento.me/ohugo" target="_blank" alt="Logo Hugo Design">
+                <div class="logohugo"></div>
+            </a>
+        </div>
+    </footer>
+    <script>
+        document.getElementById('uploadForm').addEventListener('submit', async function (e) {
+            e.preventDefault();
+            const formData = new FormData(this);
+            const response = await fetch('/upload', {
+                method: 'POST',
+                body: formData
+            });
+            const data = await response.json();
+            document.getElementById('total-pdfs').textContent = data.totalPdfs;
+            document.getElementById('total-pages').textContent = data.totalPageCount;
+
+            // Trigger CSV download
+            const a = document.createElement('a');
+            a.href = data.csvPath;
+            a.download = 'pdf_page_counts.csv';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        });
+    </script>
+</body>
+
+</html>
