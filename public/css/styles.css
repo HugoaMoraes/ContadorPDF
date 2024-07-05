@@ -1,14 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Raleway:ital,wght@0,100..900;1,100..900&family=Ubuntu+Mono:wght@400;700&display=swap");
 
 :root {
-
-  --primary-color: #4ECDC4;
+  --primary-color: #4ecdc4;
   --secondary-color: #008080;
 
   --text-color: #333;
 
   --branco: #fff;
-
 }
 
 body {
@@ -28,11 +26,10 @@ body {
 }
 
 h1 {
-
   position: absolute;
   top: 0;
-  padding-top: 1em; 
-  background: linear-gradient(90deg, #008080 0%, #007070 50%, #4ECDC4 100%);
+  padding-top: 1em;
+  background: linear-gradient(90deg, #008080 0%, #007070 50%, #4ecdc4 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   font-weight: 700;
@@ -118,4 +115,35 @@ hr {
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
+}
+
+.github-corner:hover .octo-arm {
+  animation: octocat-wave 560ms ease-in-out;
+}
+
+@keyframes octocat-wave {
+  0%,
+  100% {
+    transform: rotate(0);
+  }
+
+  20%,
+  60% {
+    transform: rotate(-25deg);
+  }
+
+  40%,
+  80% {
+    transform: rotate(10deg);
+  }
+}
+
+@media (max-width: 500px) {
+  .github-corner:hover .octo-arm {
+    animation: none;
+  }
+
+  .github-corner .octo-arm {
+    animation: octocat-wave 560ms ease-in-out;
+  }
 }
