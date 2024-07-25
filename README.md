@@ -14,6 +14,12 @@ Sistema que contabiliza e gera um SCV com informações da quantidade de paginas
 npm install
 ```
 
+## Executar o Servidor
+
+```bash
+node server.js
+```
+
 ## BackEnd
 
 ```bash
