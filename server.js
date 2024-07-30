@@ -6,7 +6,10 @@ const fs = require("fs-extra");
 const path = require("path");
 
 const app = express();
-const upload = multer({ dest: "uploads/" });
+const upload = multer({
+  dest: "uploads/",
+  limits: { files: 100 }, // Limite de 100 arquivos
+});
 
 app.use(express.static("public"));
 app.use(express.static(__dirname)); // Para servir arquivos estáticos como o CSV
@@ -17,34 +20,49 @@ async function getPdfPageCount(filePath) {
   return pdfDoc.getPageCount();
 }
 
-app.post("/upload", upload.array("pdfs", 10), async (req, res) => {
-  const files = req.files;
-  const results = [];
-  let totalPageCount = 0;
-
-  for (const file of files) {
-    const pageCount = await getPdfPageCount(file.path);
-    results.push({ fileName: file.originalname, pageCount });
-    totalPageCount += pageCount;
+// Middleware para verificar o número de arquivos
+function checkFileCount(req, res, next) {
+  if (req.files && req.files.length > 100) {
+    return res
+      .status(400)
+      .json({ error: "Número máximo de 100 PDFs excedido" });
   }
+  next();
+}
 
-  const csvPath = path.join(__dirname, "pdf_page_counts.csv");
-  const ws = fs.createWriteStream(csvPath, { encoding: "utf8" });
+app.post(
+  "/upload",
+  upload.array("pdfs", 100),
+  checkFileCount,
+  async (req, res) => {
+    const files = req.files;
+    const results = [];
+    let totalPageCount = 0;
 
-  // Write BOM to ensure UTF-8 encoding is recognized
-  ws.write("\uFEFF");
+    for (const file of files) {
+      const pageCount = await getPdfPageCount(file.path);
+      results.push({ fileName: file.originalname, pageCount });
+      totalPageCount += pageCount;
+    }
 
-  csv.write(results, { headers: true }).pipe(ws);
+    const csvPath = path.join(__dirname, "pdf_page_counts.csv");
+    const ws = fs.createWriteStream(csvPath, { encoding: "utf8" });
 
-  ws.on("finish", () => {
-    res.json({
-      totalPdfs: results.length,
-      totalPageCount,
-      csvPath: "/pdf_page_counts.csv",
+    // Write BOM to ensure UTF-8 encoding is recognized
+    ws.write("\uFEFF");
+
+    csv.write(results, { headers: true }).pipe(ws);
+
+    ws.on("finish", () => {
+      res.json({
+        totalPdfs: results.length,
+        totalPageCount,
+        csvPath: "/pdf_page_counts.csv",
+      });
+      files.forEach((file) => fs.remove(file.path));
     });
-    files.forEach((file) => fs.remove(file.path));
-  });
-});
+  }
+);
 
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "index.html"));
