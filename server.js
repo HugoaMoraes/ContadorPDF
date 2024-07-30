@@ -36,14 +36,19 @@ app.post(
   checkFileCount,
   async (req, res) => {
     const files = req.files;
-    const results = [];
-    let totalPageCount = 0;
 
-    for (const file of files) {
-      const pageCount = await getPdfPageCount(file.path);
-      results.push({ fileName: file.originalname, pageCount });
-      totalPageCount += pageCount;
-    }
+    // Processamento dos arquivos em paralelo
+    const results = await Promise.all(
+      files.map(async (file) => {
+        const pageCount = await getPdfPageCount(file.path);
+        return { fileName: file.originalname, pageCount };
+      })
+    );
+
+    const totalPageCount = results.reduce(
+      (acc, result) => acc + result.pageCount,
+      0
+    );
 
     const csvPath = path.join(__dirname, "pdf_page_counts.csv");
     const ws = fs.createWriteStream(csvPath, { encoding: "utf8" });
@@ -59,7 +64,11 @@ app.post(
         totalPageCount,
         csvPath: "/pdf_page_counts.csv",
       });
-      files.forEach((file) => fs.remove(file.path));
+
+      // Remover arquivos temporários em paralelo
+      Promise.all(files.map((file) => fs.remove(file.path))).catch((err) =>
+        console.error("Erro ao remover arquivos temporários", err)
+      );
     });
   }
 );
