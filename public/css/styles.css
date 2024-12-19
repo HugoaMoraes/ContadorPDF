@@ -10,7 +10,7 @@
 }
 
 body {
-  font-family: "Raleway", sans-serif;
+  font-family: "Montserrat", sans-serif;
   font-optical-sizing: auto;
   font-weight: 400;
 
@@ -50,10 +50,22 @@ form {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-input[type="file"] {
-  margin: 0;
-  color: var(--secondary-color);
+
+input[type=file]::file-selector-button {
+  margin-right: 20px;
+  border: none;
+  background: var(--secondary-color);
+  padding: 10px 20px;
+  border-radius: 10px;
+  color: var(--branco);
+  cursor: pointer;
+  transition: background .2s ease-in-out;
 }
+
+input[type=file]::file-selector-button:hover {
+  background: var(--text-color);
+}
+
 
 #results {
   margin-top: 20px;
@@ -70,6 +82,7 @@ input[type="file"] {
   text-align: right;
   transition: all 0.6s ease;
   font-weight: 600;
+  margin-left: 20px;
 }
 
 .button:hover {
@@ -87,6 +100,41 @@ input[type="file"] {
 
 .button:hover svg {
   transform: translateX(5px);
+}
+
+.tooltip {
+  position: absolute;
+  right: -85px;
+  top: 27px;
+  opacity: 0;
+  background-color: var(--text-color);
+  color: var(--branco);
+  padding: 5px 10px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition-duration: 0.2s;
+  pointer-events: none;
+  letter-spacing: 0.5px;
+}
+
+.tooltip::before {
+  position: absolute;
+  content: "";
+  width: 10px;
+  height: 10px;
+  background-color: var(--text-color);
+  background-size: 1000%;
+  background-position: center;
+  transform: rotate(45deg);
+  left: -5%;
+  transition-duration: 0.3s;
+}
+
+.button:hover .tooltip {
+  opacity: 1;
+  transition-duration: 0.3s;
 }
 
 .text {
