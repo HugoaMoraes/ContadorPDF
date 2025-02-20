@@ -14,7 +14,8 @@ body {
   font-optical-sizing: auto;
   font-weight: 400;
 
-  background-image: linear-gradient(-225deg, #fffeff 0%, #d7fffe 100%);
+  background: linear-gradient(-225deg, #fffeff 0%, #d7fffe 100%);
+  background-size: 400% 400%;
 
   margin: 0;
   padding: 0;
@@ -23,16 +24,42 @@ body {
   align-items: center;
   justify-content: center;
   height: 100vh;
+
+  animation: gradientBG 8s infinite alternate;
+}
+
+@keyframes gradientBG {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
 }
 
 h1 {
   position: absolute;
+  font-size: 2rem;
   top: 0;
   padding-top: 1em;
   background: linear-gradient(90deg, #008080 0%, #007070 50%, #4ecdc4 100%);
+  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   font-weight: 700;
+  font-size: clamp(2rem, 5vw, 3rem);
+  animation: fadeInUp 1s ease-in-out;
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 h2 {
@@ -41,13 +68,11 @@ h2 {
 }
 
 form {
-  background-color: rgba(255, 255, 255, 0.13);
-  backdrop-filter: blur(10px);
-  border: 2px solid rgba(255, 255, 255, 0.1);
-
-  padding: 20px;
-  border-radius: 5px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(15px);
+  border-radius: 12px;
+  padding: 25px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 input[type="file"]::file-selector-button {
@@ -111,7 +136,7 @@ input[type="file"]::file-selector-button:hover {
 .tooltip {
   position: absolute;
   right: -85px;
-  top: 27px;
+  top: 31px;
   opacity: 0;
   background-color: var(--text-color);
   color: var(--branco);
