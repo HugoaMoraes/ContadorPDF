@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    <h1>Upload de PDFs</h1>
+    <h1>Contador PDFs</h1>
     <form id="uploadForm" action="/upload" method="post" enctype="multipart/form-data">
         <input type="file" accept="application/pdf" name="pdfs" multiple>
         <button class="button botao-contar" type="submit" id="botao-contar">
@@ -29,7 +29,7 @@
         <p>Total de Páginas: <span id="total-pages">0</span></p>
     </div>
     <footer class="rodapé">
-        <div class="copyright">&copy; 2024. Development by
+        <div class="copyright">&copy; 2025. Developed by
             <a href="https://bento.me/ohugo" target="_blank" alt="Logo Hugo Design">
                 <div class="logohugo"></div>
             </a>
@@ -54,7 +54,7 @@
             botaoContar.classList.add("loading");
             setTimeout(() => {
                 botaoContar.classList.remove("loading");
-            }, 4000);
+            }, 9999);
         });
         document.getElementById('uploadForm').addEventListener('submit', async function (e) {
             e.preventDefault();

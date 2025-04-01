@@ -57,6 +57,12 @@ http://localhost:3000/
 <img src="https://github.com/HugoaMoraes/ContadorPDF/assets/102623594/6503303e-7b50-478f-bb69-a9383ba76cd1" width="auto" />
 </div>
 
+## Diagrama
+
+<div align="center">
+<img src="https://github.com/user-attachments/assets/f30585d6-945f-4bd9-908f-dbbeea0131f3" width="auto" />
+</div>
+
 ## Informações:
 
-Variável da imgem sem funcionar o app ainda não está finalizado.
+MVP em funcionamento!
