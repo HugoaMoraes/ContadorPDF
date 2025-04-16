@@ -177,7 +177,6 @@ hr {
 }
 
 .rodapé {
-  color: var(--secondary-color);
   padding: 1em;
   position: absolute;
   bottom: 0;
