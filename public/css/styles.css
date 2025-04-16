@@ -1,8 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Raleway:ital,wght@0,100..900;1,100..900&family=Ubuntu+Mono:wght@400;700&display=swap");
 
 :root {
-  --primary-color: #4ecdc4;
-  --secondary-color: #008080;
+  --primary-color: #88BD43;
+  --secondary-color: #689f38; 
 
   --text-color: #333;
 
@@ -14,7 +14,7 @@ body {
   font-optical-sizing: auto;
   font-weight: 400;
 
-  background: linear-gradient(-225deg, #fffeff 0%, #d7fffe 100%);
+  background: linear-gradient(-225deg, #F3F4F6 0%, #edeef0 100%);
   background-size: 400% 400%;
 
   margin: 0;
@@ -42,7 +42,7 @@ h1 {
   font-size: 2rem;
   top: 0;
   padding-top: 1em;
-  background: linear-gradient(90deg, #008080 0%, #007070 50%, #4ecdc4 100%);
+  background: linear-gradient(90deg, #88BD43 0%, #8bc34a 50%, #689f38 100%);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;

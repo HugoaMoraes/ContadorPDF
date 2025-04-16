@@ -32,7 +32,7 @@ http://localhost:3000/
 
 ## Versão
 
-`v.1`
+`v.2`
 
 ## Links
 
@@ -54,7 +54,7 @@ http://localhost:3000/
 ## Screenshots
 
 <div align="center">
-<img src="https://github.com/HugoaMoraes/ContadorPDF/assets/102623594/6503303e-7b50-478f-bb69-a9383ba76cd1" width="auto" />
+<img src="https://github.com/user-attachments/assets/d5f3106e-47d2-4ade-b583-f92a853e5781" width="auto" />
 </div>
 
 ## Diagrama
