@@ -1,8 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
 
 :root {
-  --primary-color: #88BD43;
-  --secondary-color: #689f38; 
+  --primary-color: #88bd43;
+  --secondary-color: #689f38;
 
   --text-color: #333;
 
@@ -14,7 +14,7 @@ body {
   font-optical-sizing: auto;
   font-weight: 400;
 
-  background: linear-gradient(-225deg, #F3F4F6 0%, #edeef0 100%);
+  background: linear-gradient(-225deg, #f3f4f6 0%, #edeef0 100%);
   background-size: 400% 400%;
 
   margin: 0;
@@ -42,7 +42,7 @@ h1 {
   font-size: 2rem;
   top: 0;
   padding-top: 1em;
-  background: linear-gradient(90deg, #88BD43 0%, #8bc34a 50%, #689f38 100%);
+  background: linear-gradient(90deg, #88bd43 0%, #8bc34a 50%, #689f38 100%);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -224,4 +224,77 @@ hr {
   .github-corner .octo-arm {
     animation: octocat-wave 560ms ease-in-out;
   }
+}
+
+body.dark-mode {
+  background: linear-gradient(-225deg, #1e1e1e 0%, #2c2c2c 100%);
+  background-size: 400% 400%;
+  color: var(--branco);
+  animation: gradientBG 8s infinite alternate;
+}
+
+body.dark-mode h2 {
+  color: var(--branco);
+}
+
+body.dark-mode input[type="file"]::file-selector-button {
+  background: var(--primary-color);
+  color: var(--text-color);
+}
+
+body.dark-mode .button {
+  background-color: var(--secondary-color);
+  color: var(--branco);
+}
+
+.dark-mode-toggle {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
+  font-size: 1.5rem;
+  color: var(--text-color);
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 1000;
+  transition: color 0.3s ease;
+}
+
+body.dark-mode .dark-mode-toggle {
+  color: var(--branco);
+}
+
+.side-box {
+  position: fixed;
+  right: 2rem; /* Distância da borda direita */
+  bottom: 0rem; /* Centraliza verticalmente */
+  transform: translateY(-50%); /* Ajusta para centralização exata */
+  width: 50px;
+  height: 50px;
+  background-color: var(--primary-color);
+  border-radius: 11px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  z-index: 1000;
+}
+
+.side-box:hover {
+  background-color: var(--secondary-color);
+}
+
+.side-box i {
+  font-size: 1.5rem;
+  color: var(--branco);
+  transition: opacity 0.3s ease;
+}
+
+.dark-mode-toggle i {
+  cursor: pointer;
 }
