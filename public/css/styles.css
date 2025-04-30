@@ -242,9 +242,8 @@ body.dark-mode input[type="file"]::file-selector-button {
   color: var(--text-color);
 }
 
-body.dark-mode .button {
-  background-color: var(--secondary-color);
-  color: var(--branco);
+body.dark-mode input[type="file"]::file-selector-button:hover {
+  background: var(--branco);
 }
 
 .dark-mode-toggle {
